@@ -1,18 +1,25 @@
 module.exports = function (grunt) {
 	'use strict';
-    grunt.initConfig({
-        browserify: {
-            dist: {
-                files: {
+    grunt.initConfig(
+	{
+        browserify: 
+		{
+            dist: 
+			{
+                files:
+				 {
                     'build/index.js': ['src/**/*'],
                 },
-                options: {
+                options: 
+				{
                     transform: ['glslify']
                 }
             }
         },
-        watch: {
-            options: {
+        watch: 
+		{
+            options: 
+			{
                 livereload: true,
             },
             livereload: {
@@ -22,9 +29,36 @@ module.exports = function (grunt) {
                     spawn: false,
                 }
             }
-        }
-	});
+        },
+		buildcontrol: 
+		{
+			options: 
+			{
+				dir: 'build',
+				commit: true,
+				push: true,
+				message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+			},
+			pages: 
+			{
+				options: 
+				{
+					remote: 'git@github.com/RedDaturaSoftworks/WebGL-Engine.git',
+					branch: 'gh-pages'
+				}
+			},
+			local: 
+			{
+				options:
+				{
+					remote: '../',
+					branch: 'build'
+				}
+			}
+		}
 
+	});
+	grunt.loadNpmTasks('grunt-build-control');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-browserify');
 
