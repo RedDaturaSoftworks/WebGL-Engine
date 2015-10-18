@@ -12,6 +12,7 @@ var main = function()
 {
 	CreateGLContext();
 	Logger.log("After context creation...");
+	Logger.log("After context creation...");
 	var model = new Model.Model();
 
 	model.VSSetShader(glslify('../shaders/vshader.glsl'));
