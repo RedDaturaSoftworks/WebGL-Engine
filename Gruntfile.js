@@ -1,11 +1,10 @@
-'use strict';
-
 module.exports = function (grunt) {
+	'use strict';
     grunt.initConfig({
         browserify: {
             dist: {
                 files: {
-                    'build/index.js': ['src/**']
+                    'build/index.js': ['src/**/*'],
                 },
                 options: {
                     transform: ['glslify']
@@ -17,19 +16,19 @@ module.exports = function (grunt) {
                 livereload: true,
             },
             livereload: {
-                files: ['shaders/{,**/}*.glsl', 'index.html', 'src/*.js'],
+                files: ['shaders/{,**/}*.glsl', 'index.html', 'src/{,**/}*.js'],
                 tasks: ['build'],
                 options: {
                     spawn: false,
                 }
             }
         }
-    });
+	});
 
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-browserify');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-browserify');
 
-    grunt.registerTask('build', ['browserify']);
+	grunt.registerTask('build', ['browserify']);
 
-    grunt.registerTask('default', ['build']);
+	grunt.registerTask('default', ['build']);
 };
