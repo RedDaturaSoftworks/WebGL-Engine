@@ -39,7 +39,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-browserify');
 
 	grunt.registerTask('build', ['browserify']);
-	grunt.registerTask('heroku', ['browserify']);
+	grunt.registerTask('heroku', ['browserify:dist']);
 
 	grunt.registerTask('default', ['build']);
 };
