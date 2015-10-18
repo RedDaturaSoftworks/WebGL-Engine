@@ -22,40 +22,16 @@ module.exports = function (grunt) {
 			{
                 livereload: true,
             },
-            livereload: {
+            livereload: 
+			{
                 files: ['shaders/{,**/}*.glsl', 'index.html', 'src/{,**/}*.js'],
                 tasks: ['build'],
-                options: {
+                options: 
+				{
                     spawn: false,
                 }
             }
-        },
-		buildcontrol: 
-		{
-			options: 
-			{
-				dir: '.',
-				commit: true,
-				push: true,
-				message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
-			},
-			pages: 
-			{
-				options: 
-				{
-					remote: 'https://www.github.com/RedDaturaSoftworks/WebGL-Engine',
-					branch: 'gh-pages'
-				}
-			},
-			local: 
-			{
-				options:
-				{
-					remote: '../',
-					branch: 'build'
-				}
-			}
-		}
+        }
 
 	});
 	grunt.loadNpmTasks('grunt-build-control');
@@ -63,6 +39,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-browserify');
 
 	grunt.registerTask('build', ['browserify']);
+	grunt.registerTask('heroku', ['browserify']);
 
 	grunt.registerTask('default', ['build']);
 };
