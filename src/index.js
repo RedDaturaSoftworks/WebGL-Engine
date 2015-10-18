@@ -6,7 +6,7 @@ var glslify = require('glslify');
 var Logger = require('./logger');
 var glMatrix = require('gl-matrix');
 var Model = require('./renderer/model');
-var GeometryGenerator = require('./renderer/GeometryGenerator');
+var GeometryGenerator = require('./renderer/geometrygenerator');
 
 var main = function() 
 {
