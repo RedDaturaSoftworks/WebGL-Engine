@@ -11,19 +11,19 @@ var GeometryGenerator = require('./renderer/geometrygenerator');
 var main = function() 
 {
 	CreateGLContext();
-	Logger.log("You don't have a WebGL compatible browser.");
-	Logger.log("You don't have a WebGL compatible browser.");
-	Logger.log("You don't have a WebGL compatible browser.");
-		var model = new Model.Model();
+	Logger.log("After context creation...");
+	var model = new Model.Model();
 
 	model.VSSetShader(glslify('../shaders/vshader.glsl'));
 	model.PSSetShader(glslify('../shaders/pshader.glsl'));
-	
+	Logger.log('Shaders created...');
 	var modeldata = GeometryGenerator.GenerateCube();
+
 
 	model.AddVertices(modeldata.vertices);
 	model.AddIndices(modeldata.indices);
 
+	Logger.log('Cube data loaded...');
 	var projmat = glMatrix.mat4.create();
 	var modelmat = glMatrix.mat4.create();
 	var VIEWMATRIX=glMatrix.mat4.create();
@@ -38,9 +38,9 @@ var main = function()
 	model.SetViewmatrix(VIEWMATRIX);
 
 	var time_old=0;
+	Logger.log('Render starts...');
 	var animate=function(time) 
 	{
-		var framestart = performance.now();
 		var dt = time-time_old;
 		time_old=time;
 
@@ -57,11 +57,7 @@ var main = function()
 		
 		model.SetModelmatrix(modelmat);
 		model.Render();
-		
-		var end = performance.now();
-		var frametime = end - framestart;
-		var fps = document.getElementById('FrameTime');
-		fps.innerText = frametime.toString().substring(0, 5) + 'ms';
+	
 		window.requestAnimationFrame(animate);
 	};
 	animate(0);
