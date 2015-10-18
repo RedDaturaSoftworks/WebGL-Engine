@@ -43,7 +43,7 @@ module.exports = function (grunt) {
 			{
 				options: 
 				{
-					remote: 'git@github.com/RedDaturaSoftworks/WebGL-Engine.git',
+					remote: 'https://www.github.com/RedDaturaSoftworks/WebGL-Engine',
 					branch: 'gh-pages'
 				}
 			},
