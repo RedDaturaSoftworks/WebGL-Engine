@@ -1,6 +1,6 @@
 /* global gl */
 var glMatrix = require('gl-matrix');
-var Shader = require('./Shader');
+var Shader = require('./shader');
 
 function Model()
 {

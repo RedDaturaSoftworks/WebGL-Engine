@@ -1,5 +1,5 @@
 /* global gl */
-var Logger = require('../Logger');
+var Logger = require('../logger');
 
 function implGetShader(source, type, typeString) 
 {
