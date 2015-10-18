@@ -4964,8 +4964,10 @@ var GeometryGenerator = require('./renderer/GeometryGenerator');
 var main = function() 
 {
 	CreateGLContext();
-
-	var model = new Model.Model();
+	Logger.log("You don't have a WebGL compatible browser.");
+	Logger.log("You don't have a WebGL compatible browser.");
+	Logger.log("You don't have a WebGL compatible browser.");
+		var model = new Model.Model();
 
 	model.VSSetShader("#define GLSLIFY 1\nattribute vec3 position;\r\n\r\nuniform mat4 projmat;\r\nuniform mat4 viewmat;\r\nuniform mat4 modelmat;\r\n\r\nattribute vec2 uv;\r\nvarying vec2 vuv;\r\n\r\nvoid main(void) \r\n{\r\n\tgl_Position = projmat * viewmat * modelmat * vec4(position, 1.);\r\n\tvuv=uv;\r\n}");
 	model.PSSetShader("#define GLSLIFY 1\nprecision mediump float;\n\nvarying vec2 vuv;\n\nvoid main(void) \n{\n\tvec2 uv = vuv;\n\t//uv -= 0.5;\n\t//uv /= vec2(9.0 / 16.0, 1.0);\n\t\n\tgl_FragColor = vec4(uv, 0.0, 1.0);\n}");
