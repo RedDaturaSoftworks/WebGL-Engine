@@ -11,8 +11,10 @@ var GeometryGenerator = require('./renderer/GeometryGenerator');
 var main = function() 
 {
 	CreateGLContext();
-
-	var model = new Model.Model();
+	Logger.log("You don't have a WebGL compatible browser.");
+	Logger.log("You don't have a WebGL compatible browser.");
+	Logger.log("You don't have a WebGL compatible browser.");
+		var model = new Model.Model();
 
 	model.VSSetShader(glslify('../shaders/vshader.glsl'));
 	model.PSSetShader(glslify('../shaders/pshader.glsl'));
