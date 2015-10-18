@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<title>Red Datura Softworks - WebGL Framework</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body style='margin:0px;'>
+		<canvas id='your_canvas' style='position: absolute; background-color: #222;'></canvas>
+		<script src="index.js"></script>
+		<script src="src/webgl-debug.js"></script>
+		<script>
+			var gl;
+			var CANVAS;
+
+			
+			function throwOnGLError(err, funcName, args) {
+				throw WebGLDebugUtils.glEnumToString(err) + " was caused by call to: " + funcName;
+			};
+
+			function CreateGLContext()
+			{
+				CANVAS=document.getElementById("your_canvas");
+			
+				CANVAS.width=window.innerWidth;
+				CANVAS.height=window.innerHeight;
+				try 
+				{
+					gl = CANVAS.getContext("experimental-webgl", {antialias: true});
+					
+				} 
+				catch (e) 
+				{
+					alert("You don't have a WebGL compatible browser.");
+					Logger.log(Logger.Severity_Err, "You don't have a WebGL compatible browser.");
+					return false;
+				}
+				gl = WebGLDebugUtils.makeDebugContext(gl, throwOnGLError);
+			}
+			
+			function ActivateDebugConsole()
+			{
+				var e = document.getElementById('overlay-console');
+				if(e.style.visibility == 'hidden')
+				{
+					e.style.visibility = 'visible';
+				}
+				else
+				{
+					e.style.visibility = 'hidden';
+				}
+			}
+		</script>
+		
+		<div id="overlay">
+			<button onclick="ActivateDebugConsole()">Activate Debug Console</button>
+			<p id="FrameTime"></p>
+			<div id="overlay-console" style="visibility: hidden"></div>
+	
+		</div>
+	</body>
+</html>
