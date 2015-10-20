@@ -23,6 +23,7 @@
 	},
 	"dependencies": 
 	{
+		"webgl-obj-loader": "*",
 		"browserify": "^11.2.0",
 		"glslify": "^2.3.1",
 		"grunt": "^0.4.5",
@@ -32,6 +33,7 @@
 		"connect-livereload": "*",
 		"gl-matrix": "*",
 		"jquery": "*",
-		"express": "^4.13.3"
+		"express": "^4.13.3",
+		"stats-js": "*"
 	}
 }

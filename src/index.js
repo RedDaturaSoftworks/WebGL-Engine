@@ -7,9 +7,20 @@ var Logger = require('./logger');
 var glMatrix = require('gl-matrix');
 var Model = require('./renderer/model');
 var GeometryGenerator = require('./renderer/geometrygenerator');
+var Stats = require('stats-js');
+
+var stats = new Stats();
 
 var main = function() 
 {
+	stats.setMode(0); // 0: fps, 1: ms 
+ 
+	// Align top-left 
+	stats.domElement.style.position = 'absolute';
+	stats.domElement.style.left = '50%';
+	stats.domElement.style.top = '0px';
+	document.body.appendChild( stats.domElement );
+	
 	CreateGLContext();
 
 	var model = new Model.Model();
@@ -41,6 +52,7 @@ var main = function()
 
 	var animate=function(time) 
 	{
+		stats.begin();
 		var dt = time-time_old;
 		time_old=time;
 
@@ -58,6 +70,8 @@ var main = function()
 		model.SetModelmatrix(modelmat);
 		model.Render();
 	
+		stats.end();
+		
 		window.requestAnimationFrame(animate);
 	};
 	animate(0);
